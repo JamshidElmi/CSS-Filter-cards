@@ -1,0 +1,106 @@
+/**
+*  @project  CSS Filter Cards
+*  @author   Jamshid Elmi
+*  @created  2022-09-18 12:50:33
+*  @modified 2022-09-18 12:50:33
+*  @tutorial https://youtu.be/HHBgOazdZ8Q
+*/
+*{
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  height: 100%;
+  font-family: sans-serif;
+  background: #e1e1e1;
+}
+
+.container{
+  align-items: flex-start;
+  display: flex;
+  min-height: 100%;
+  justify-content: center;
+  padding: 64px 24px;
+}
+
+.card-grid{
+  display: grid;
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+@media(min-width: 540px){
+  .card-grid{
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media(min-width: 960px){
+  .card-grid{
+    grid-template-columns: repeat(4, 1fr); 
+  }
+}
+
+.card{
+  position: relative;
+}
+
+.card:before{
+  content: '';
+  display: block;
+  padding-bottom: 150%;
+  width: 100%;
+}
+
+.background{
+  background-position: center;
+  background-size: cover;
+  border-radius: 24px;
+  bottom: 0;
+  filter: brightness(0.75) saturate(1.2) 
+          contrast(0.85);
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 
+    filter 200ms linear,
+    transform 200ms linear;
+}
+
+.card:hover .background{
+  transform: scale(1.05);
+  filter: none;
+}
+
+.card-grid:hover > .card:not(:hover) .background{
+  filter: brightness(0.6) saturate(1)
+          contrast(1.2)   blur(5px);
+}
+
+.card-grid:hover > .card:not(:hover) .content{
+  filter: brightness(0.8) blur(2px);
+}
+
+.content{
+  padding: 24px;
+  position: absolute;
+  top: 0;
+}
+
+.category{
+  color: #e1e1e1;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.heading{
+  color: #e1e1e1;
+  font-size: 1.8rem;
+}
